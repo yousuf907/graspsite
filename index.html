@@ -69,7 +69,7 @@
 
           <div class="column has-text-centered">
             <p>
-              [* corresponding author]
+              [* Corresponding author]
             </p>
           </div>
 
@@ -105,18 +105,248 @@
 </section>
 
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Motivation</h2>
+        <div class="content has-text-justified">
+
+          <p>
+            Continual learning (CL) in deep neural networks (DNNs) involves incrementally accumulating knowledge 
+            in a DNN from a growing data stream. A major challenge in CL is that non-stationary data streams cause 
+            catastrophic forgetting of previously learned abilities. A popular solution is rehearsal: storing past 
+            observations in a buffer and then sampling the buffer to update the DNN. Uniform sampling in a class-balanced 
+            manner is highly effective, and better sample selection policies have been elusive. Here, we propose a 
+            new sample selection policy called GRASP that selects the most prototypical (easy) samples first and then 
+            gradually selects less prototypical (harder) examples. GRASP has little additional compute or memory overhead 
+            compared to uniform selection, enabling it to scale to large datasets. Compared to 17 other rehearsal policies, 
+            GRASP achieves higher accuracy in CL experiments on ImageNet. Compared to uniform balanced sampling, 
+            GRASP achieves the same performance with 40% fewer updates. We also show that GRASP is effective for CL on 
+            five text classification datasets.
+          </p>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
 
 
 
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Compute Comparison</h2>
+          <p align="justify">
+            GRASP achieves the best accuracy of the uniform balanced policy while requiring 40% fewer
+            gradient descent updates for class incremental learning with SIESTA on ImageNet-1K
+          </p>
+          <img src="./static/images/compute_replay_updated.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">Time Comparison</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p align="justify">
+              GRASP matches the best accuracy of the uniform balanced policy while requiring 36% less 
+              training time for class incremental learning with SIESTA on ImageNet-1K
+            </p>
+            <img src="./static/images/time_replay_updated.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
 
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+      <h2 class="title is-3">How Efficient Is GRASP?</h2>
+      <img src="./static/images/grasp_barplot.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+      <h2 class="subtitle has-text-centered">  
+        Current rehearsal policies are computationally expensive and challenging to scale, whereas GRASP offers 
+        significantly greater efficiency and scalability.
+        <FONT COLOR="#d55e00"><b>Unlike GRASP, existing SOTA methods require significantly longer training 
+          time than uniform.</b></FONT>
+      </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+      <h2 class="title is-3">GRASP Outperforms Existing SOTA</h2>
+      <img src="./static/images/laten_unbounded_imagenet300.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+      <h2 class="subtitle has-text-centered">  
+        GRASP outperforms 17 other rehearsal policies in class incremental learning on 
+        ImageNet-300 using SIESTA with latent rehearsal.
+        Here, we illustrate the qualitative comparison between GRASP and other high-performing policies.
+      </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Class Incremental Learning</h2>
+          <p align="justify">
+            GRASP outperforms uniform balanced rehearsal in class incremental learning on ImageNet-1K using SIESTA 
+            for both veridical and latent rehearsal settings.
+          </p>
+          <img src="./static/images/grasp_veridical_replay.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">Continual IID Learning</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p align="justify">
+              GRASP outperforms uniform balanced in continual IID (independent and identically distributed)
+              experiments on ImageNet-1K using SIESTA and latent rehearsal.
+            </p>
+            <img src="./static/images/iid_cl_latent.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Storage Constraints Analysis</h2>
+          <p align="justify">
+            GRASP outperforms other rehearsal policies under varied storage constraints
+            in class incremental learning on ImageNet-300 using SIESTA and latent rehearsal.
+          </p>
+          <img src="./static/images/compute_comparison_updated.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">Compute Constraints Analysis</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p align="justify">
+              GRASP surpasses compared methods under varied compute constraints
+              in class incremental learning on ImageNet-300 using SIESTA and latent rehearsal.
+            </p>
+            <img src="./static/images/memory_comparison_updated.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+      <h2 class="title is-3">How Does GRASP Work?</h2>
+      <img src="./static/images/grasp.jpg"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+      <h2 class="subtitle has-text-justified">  
+        GRASP is based on the hypothesis that choosing only easy or hard samples are both suboptimal 
+        and that the DNN would benefit from a curriculum that combines both. <FONT COLOR="#d55e00"><b>GRASP first 
+        selects the most prototypical (easy) samples from the rehearsal buffer and then gradually selects harder samples, 
+        where easy samples are closest to the class mean and hard samples are farthest.</b></FONT>
+        We illustrate how GRASP works compared to uniform random policy.
+        Class mean is denoted by ⭐. Selected samples are indicated by &#x1F534.
+      </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+      <h2 class="title is-3">Why Is GRASP More Effective?</h2>
+      <img src="./static/images/grasp_drift.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+      <h2 class="subtitle has-text-justified"> 
+        While learning new classes, the representations of old classes abruptly change and drift over time.
+        This abrupt change in old representations causes catastrophic forgetting of old knowledge and is 
+        difficult to correct without longer training. 
+        As shown in Figure, existing methods exhibit higher representation drift. These methods mostly 
+        prioritize difficult samples, for instance, MIR and ASER select samples with maximum interference.
+        Consequently, the old representations are excessively perturbed especially in the early stage of rehearsal 
+        indicated by the sharp rise in MSE. <FONT COLOR="#d55e00"><b>On the contrary, GRASP reduces representation 
+        drift by learning from subsets of increasing difficulty levels.</b></FONT>
+      </h2>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <section class="section" id="NEWS">
   <div class="container is-max-desktop content">
     <h2 class="title">NEWS</h2>
     <p>
-      GRASP has been accepted at Conference on Lifelong Learning Agents (CoLLAs), 2024!
+      GRASP has been accepted at the Conference on Lifelong Learning Agents (CoLLAs), 2024 &#x1F389
     </p>
   </div>
 </section>
