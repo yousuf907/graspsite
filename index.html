@@ -109,6 +109,16 @@
                   <span>Video</span>
                   </a>
               </span>
+              <!-- Poster Link. -->
+              <span class="link-block">
+                <a href="./static/images/Updated_Poster_GRASP_CoLLAs_2024.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-image"></i>
+                  </span>
+                  <span>Poster</span>
+                  </a>
+              </span>
             </div>
 
           </div>
@@ -130,21 +140,43 @@
           <p>
             Continual learning (CL) in deep neural networks (DNNs) involves incrementally accumulating knowledge 
             in a DNN from a growing data stream. A major challenge in CL is that non-stationary data streams cause 
-            catastrophic forgetting of previously learned abilities. A popular solution is rehearsal: storing past 
+            <b>catastrophic forgetting</b> of previously learned abilities. A popular solution is <b>rehearsal:</b> storing past 
             observations in a buffer and then sampling the buffer to update the DNN. Uniform sampling in a class-balanced 
-            manner is highly effective, and better sample selection policies have been elusive. Here, we propose a 
-            new sample selection policy called GRASP that selects the most prototypical (easy) samples first and then 
-            gradually selects less prototypical (harder) examples. GRASP has little additional compute or memory overhead 
-            compared to uniform selection, enabling it to scale to large datasets. Compared to 17 other rehearsal policies, 
-            GRASP achieves higher accuracy in CL experiments on ImageNet. Compared to uniform balanced sampling, 
-            GRASP achieves the same performance with 40% fewer updates. We also show that GRASP is effective for CL on 
-            five text classification datasets.
+            manner is highly effective, and better sample selection policies have been elusive. <b>Here, we propose a 
+            new sample selection or rehearsal policy called <FONT COLOR="#d55e00"><b>GRASP</b></FONT> (<FONT COLOR="#d55e00"><b>GRA</b></FONT>dually 
+            <FONT COLOR="#d55e00"><b>S</b></FONT>elect less <FONT COLOR="#d55e00"><b>P</b></FONT>rototypical) that selects 
+            the most prototypical (easy) samples first and then gradually selects less prototypical (harder) samples.</b> 
+            GRASP has little additional compute or memory overhead compared to uniform selection, enabling it to scale to large datasets. 
+            Compared to 17 other rehearsal policies, GRASP achieves higher accuracy in CL experiments on ImageNet. 
+            Compared to uniform balanced sampling, GRASP achieves the same performance with 40% fewer updates. 
+            We also show that GRASP is effective for CL on five text classification datasets. GRASP has potential to 
+            supplant expensive periodic retraining and make on-device CL more efficient.
           </p>
 
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+      <h2 class="title is-3">What Is A Rehearsal Policy?</h2>
+      <img src="./static/images/GRASP_CoLLAs_2024-03.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+      <h2 class="subtitle has-text-justified">  
+        <b><FONT COLOR="#d55e00"><b>A rehearsal policy</b></FONT> governs construction of mini-batches for 
+        updating a deep neural network (DNN) during rehearsal.
+        <FONT COLOR="#d55e00"><b>Goal:</b></FONT> Efficiently train a DNN with fewer network updates to reach
+        maximum performance.</b>
+      </h2>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -309,6 +341,44 @@
     </div>
     <!--/ Matting. -->
 
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">GRASP Works Well With Various CL Methods</h2>
+          <p align="justify">
+            GRASP outperforms uniform balanced rehearsal policy when integrated with various
+            rehearsal-based continual learning methods.
+          </p>
+          <img src="./static/images/grasp_derpp_gdumb.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">GRASP Shows Efficacy For Various Settings</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p align="justify">
+              GRASP surpasses uniform balanced policy for both latent and veridical rehearsal with or 
+              without buffer constraints when integrated with SIESTA algorithm.
+            </p>
+            <img src="./static/images/grasp_unbounded_memory.png"
+          class="interpolation-image"
+          alt="Interpolation end reference image."/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+
 
 
 <section class="section">
@@ -347,8 +417,10 @@
         As shown in Figure, existing methods exhibit higher representation drift. These methods mostly 
         prioritize difficult samples, for instance, MIR and ASER select samples with maximum interference.
         Consequently, the old representations are excessively perturbed especially in the early stage of rehearsal 
-        indicated by the sharp rise in MSE. <FONT COLOR="#d55e00"><b>On the contrary, GRASP reduces representation 
-        drift by learning from subsets of increasing difficulty levels.</b></FONT>
+        indicated by the sharp rise in MSE (mean squared error). <FONT COLOR="#d55e00"><b>On the contrary, GRASP reduces 
+        representation drift by learning from subsets of increasing difficulty levels.</b></FONT>
+        We measure the representation drift by computing the MSE between the penultimate embedding vectors across 
+        consecutive training iterations.
       </h2>
       </div>
     </div>
